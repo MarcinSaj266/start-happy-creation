@@ -37,7 +37,7 @@ export const questions: Question[] = [
   },
   {
     id: 4,
-    text: "Gdy dajesz dziecku instrukcję składającą się z 2–3 kroków (np. „załóż buty, weź plecak i stań przy drzwiach"), ono:",
+    text: 'Gdy dajesz dziecku instrukcję składającą się z 2\u20133 kroków (np. \u201Ezałóż buty, weź plecak i stań przy drzwiach\u201D), ono:',
     options: [
       { label: "Wykonuje wszystkie kroki po kolei, bez dodatkowych przypomnień.", points: 3 },
       { label: "Pamięta pierwszy krok, ale potrzebuje przypomnienia o kolejnych.", points: 2 },
