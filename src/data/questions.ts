@@ -64,7 +64,7 @@ export const questions: Question[] = [
   },
   {
     id: 7,
-    text: "Przed snem, kiedy kończysz czytać bajkę i mówisz „czas spać", Twoje dziecko:",
+    text: 'Przed snem, kiedy kończysz czytać bajkę i mówisz \u201Eczas spać\u201D, Twoje dziecko:',
     options: [
       { label: "Akceptuje koniec bajki i spokojnie przygotowuje się do snu.", points: 3 },
       { label: "Prosi o jeszcze jedną stronę, ale ostatecznie się zgadza.", points: 2 },
