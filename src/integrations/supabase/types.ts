@@ -14,7 +14,112 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          is_verified: boolean | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          is_verified?: boolean | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          is_verified?: boolean | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      quiz_answers: {
+        Row: {
+          answered_at: string | null
+          domain: Database["public"]["Enums"]["executive_domain"]
+          id: string
+          question_number: number
+          score: number
+          session_id: string
+        }
+        Insert: {
+          answered_at?: string | null
+          domain: Database["public"]["Enums"]["executive_domain"]
+          id?: string
+          question_number: number
+          score: number
+          session_id: string
+        }
+        Update: {
+          answered_at?: string | null
+          domain?: Database["public"]["Enums"]["executive_domain"]
+          id?: string
+          question_number?: number
+          score?: number
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quiz_answers_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "quiz_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quiz_sessions: {
+        Row: {
+          client_hash: string | null
+          completed_at: string | null
+          id: string
+          lead_id: string | null
+          score_cognitive_flexibility: number | null
+          score_inhibition: number | null
+          score_working_memory: number | null
+          started_at: string | null
+          status: Database["public"]["Enums"]["session_status"] | null
+          total_score: number | null
+        }
+        Insert: {
+          client_hash?: string | null
+          completed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          score_cognitive_flexibility?: number | null
+          score_inhibition?: number | null
+          score_working_memory?: number | null
+          started_at?: string | null
+          status?: Database["public"]["Enums"]["session_status"] | null
+          total_score?: number | null
+        }
+        Update: {
+          client_hash?: string | null
+          completed_at?: string | null
+          id?: string
+          lead_id?: string | null
+          score_cognitive_flexibility?: number | null
+          score_inhibition?: number | null
+          score_working_memory?: number | null
+          started_at?: string | null
+          status?: Database["public"]["Enums"]["session_status"] | null
+          total_score?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quiz_sessions_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +128,11 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      executive_domain:
+        | "inhibition"
+        | "working_memory"
+        | "cognitive_flexibility"
+      session_status: "in_progress" | "completed" | "abandoned"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +259,13 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      executive_domain: [
+        "inhibition",
+        "working_memory",
+        "cognitive_flexibility",
+      ],
+      session_status: ["in_progress", "completed", "abandoned"],
+    },
   },
 } as const
