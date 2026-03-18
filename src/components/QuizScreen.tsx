@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { questions } from "@/data/questions";
+import type { ExecutiveDomain } from "@/data/questions";
+
+interface QuizAnswer {
+  question_number: number;
+  domain: ExecutiveDomain;
+  score: number;
+}
 
 interface QuizScreenProps {
-  onComplete: (score: number) => void;
+  onComplete: (answers: QuizAnswer[]) => void;
 }
 
 const QuizScreen = ({ onComplete }: QuizScreenProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [collectedAnswers, setCollectedAnswers] = useState<QuizAnswer[]>([]);
 
   const question = questions[currentIndex];
   const total = questions.length;
@@ -19,17 +26,23 @@ const QuizScreen = ({ onComplete }: QuizScreenProps) => {
   const handleSelect = (optionIndex: number, points: number) => {
     if (selectedOption !== null) return;
     setSelectedOption(optionIndex);
-    const newScore = score + points;
+
+    const newAnswer: QuizAnswer = {
+      question_number: question.id,
+      domain: question.domain,
+      score: points,
+    };
+    const updatedAnswers = [...collectedAnswers, newAnswer];
 
     setTimeout(() => {
       if (currentIndex < total - 1) {
-        setScore(newScore);
+        setCollectedAnswers(updatedAnswers);
         setCurrentIndex((prev) => prev + 1);
         setSelectedOption(null);
       } else {
         setIsLoading(true);
         setTimeout(() => {
-          onComplete(newScore);
+          onComplete(updatedAnswers);
         }, 1500);
       }
     }, 300);

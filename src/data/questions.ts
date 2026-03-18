@@ -1,6 +1,9 @@
+export type ExecutiveDomain = 'inhibition' | 'working_memory' | 'cognitive_flexibility';
+
 export interface Question {
   id: number;
   text: string;
+  domain: ExecutiveDomain;
   options: {
     label: string;
     points: number;
@@ -10,6 +13,7 @@ export interface Question {
 export const questions: Question[] = [
   {
     id: 1,
+    domain: 'inhibition',
     text: "Gdy prosisz dziecko o przerwanie oglądania bajki i umycie rąk przed kolacją, najczęściej:",
     options: [
       { label: "Natychmiast wyłącza telewizor i idzie do łazienki bez protestu.", points: 3 },
@@ -19,6 +23,7 @@ export const questions: Question[] = [
   },
   {
     id: 2,
+    domain: 'cognitive_flexibility',
     text: "Kiedy dziecko buduje wieżę z klocków i ta się przewraca, jego typowa reakcja to:",
     options: [
       { label: "Spokojnie zaczyna budować od nowa, czasem zmieniając strategię.", points: 3 },
@@ -28,6 +33,7 @@ export const questions: Question[] = [
   },
   {
     id: 3,
+    domain: 'inhibition',
     text: "Podczas wspólnej zabawy planszowej z rodzeństwem lub rówieśnikami, Twoje dziecko:",
     options: [
       { label: "Cierpliwie czeka na swoją kolej i przestrzega zasad gry.", points: 3 },
@@ -37,6 +43,7 @@ export const questions: Question[] = [
   },
   {
     id: 4,
+    domain: 'working_memory',
     text: 'Gdy dajesz dziecku instrukcję składającą się z 2\u20133 kroków (np. \u201Ezałóż buty, weź plecak i stań przy drzwiach\u201D), ono:',
     options: [
       { label: "Wykonuje wszystkie kroki po kolei, bez dodatkowych przypomnień.", points: 3 },
@@ -46,6 +53,7 @@ export const questions: Question[] = [
   },
   {
     id: 5,
+    domain: 'cognitive_flexibility',
     text: "Jak Twoje dziecko radzi sobie z nową, nieznaną sytuacją (np. pierwszy dzień w nowym miejscu)?",
     options: [
       { label: "Jest ciekawe i otwarte, szybko się adaptuje.", points: 3 },
@@ -55,6 +63,7 @@ export const questions: Question[] = [
   },
   {
     id: 6,
+    domain: 'inhibition',
     text: "Kiedy dziecko chce zabawkę, którą bawi się inne dziecko na placu zabaw, najczęściej:",
     options: [
       { label: "Pyta grzecznie, czy może się nią pobawić, lub czeka cierpliwie.", points: 3 },
@@ -64,6 +73,7 @@ export const questions: Question[] = [
   },
   {
     id: 7,
+    domain: 'inhibition',
     text: 'Przed snem, kiedy kończysz czytać bajkę i mówisz \u201Eczas spać\u201D, Twoje dziecko:',
     options: [
       { label: "Akceptuje koniec bajki i spokojnie przygotowuje się do snu.", points: 3 },
@@ -73,6 +83,7 @@ export const questions: Question[] = [
   },
   {
     id: 8,
+    domain: 'cognitive_flexibility',
     text: "Gdy dziecko rysuje i efekt nie wygląda tak, jak sobie wyobrażało, ono:",
     options: [
       { label: "Próbuje jeszcze raz lub kreatywnie modyfikuje rysunek.", points: 3 },
@@ -82,6 +93,7 @@ export const questions: Question[] = [
   },
   {
     id: 9,
+    domain: 'working_memory',
     text: "Jak Twoje dziecko zachowuje się, gdy musi czekać (np. w kolejce, w restauracji)?",
     options: [
       { label: "Potrafi się zająć rozmową, obserwacją otoczenia lub cichą zabawą.", points: 3 },
@@ -91,6 +103,7 @@ export const questions: Question[] = [
   },
   {
     id: 10,
+    domain: 'cognitive_flexibility',
     text: "Gdy musisz niespodziewanie zmienić plany (np. odwołana wizyta na placu zabaw z powodu deszczu), dziecko:",
     options: [
       { label: "Przyjmuje zmianę ze spokojem i szybko przechodzi do nowej aktywności.", points: 3 },
