@@ -2,7 +2,8 @@ export type ExecutiveDomain = 'inhibition' | 'working_memory' | 'cognitive_flexi
 
 export interface Question {
   id: number;
-  text: string;
+  title: string;
+  situation: string;
   domain: ExecutiveDomain;
   options: {
     label: string;
@@ -13,102 +14,112 @@ export interface Question {
 export const questions: Question[] = [
   {
     id: 1,
-    domain: 'inhibition',
-    text: "Gdy prosisz dziecko o przerwanie oglądania bajki i umycie rąk przed kolacją, najczęściej:",
+    domain: 'cognitive_flexibility',
+    title: "Elastyczność poznawcza (Zarządzanie zmianą)",
+    situation: "Zbliża się moment wyjścia z placu zabaw lub zakończenia oglądania bajki. Jak przebiega ten proces?",
     options: [
-      { label: "Natychmiast wyłącza telewizor i idzie do łazienki bez protestu.", points: 3 },
-      { label: "Potrzebuje 1–2 przypomnień, ale ostatecznie wykonuje polecenie.", points: 2 },
-      { label: "Reaguje silnym sprzeciwem, płaczem lub całkowitym ignorowaniem prośby.", points: 1 },
+      { label: "Dziecko akceptuje zmianę i płynnie przechodzi do kolejnej aktywności (z ewentualnym drobnym wsparciem).", points: 3 },
+      { label: "Wymaga kilkukrotnego uprzedzania (\"jeszcze 5 minut\"), a proces i tak kończy się negocjacjami.", points: 2 },
+      { label: "Każdą nagłą zmianę układu odniesienia traktuje jak zagrożenie – pojawia się krzyk, płacz lub fizyczny opór.", points: 1 },
     ],
   },
   {
     id: 2,
-    domain: 'cognitive_flexibility',
-    text: "Kiedy dziecko buduje wieżę z klocków i ta się przewraca, jego typowa reakcja to:",
+    domain: 'working_memory',
+    title: "Pamięć robocza (Przetwarzanie złożonych poleceń)",
+    situation: "Wydajesz dwuetapowe polecenie: \"Idź do pokoju, załóż skarpetki i przynieś swojego misia\". Jaki jest efekt?",
     options: [
-      { label: "Spokojnie zaczyna budować od nowa, czasem zmieniając strategię.", points: 3 },
-      { label: "Przez chwilę jest sfrustrowane, ale po krótkim czasie próbuje ponownie.", points: 2 },
-      { label: "Wybucha złością, rzuca klockami lub odmawia dalszej zabawy.", points: 1 },
+      { label: "Cel zrealizowany – dziecko wraca w skarpetkach i z misiem.", points: 3 },
+      { label: "Idzie do pokoju, ale gubi wątek. Przynosi misia, ale zapomina o skarpetkach (lub odwrotnie).", points: 2 },
+      { label: "Idzie do pokoju i zaczyna bawić się klockami. Instrukcja ulatnia się z jego pamięci w ciągu kilku sekund.", points: 1 },
     ],
   },
   {
     id: 3,
     domain: 'inhibition',
-    text: "Podczas wspólnej zabawy planszowej z rodzeństwem lub rówieśnikami, Twoje dziecko:",
+    title: "Kontrola hamująca (Odroczenie gratyfikacji)",
+    situation: "Rozmawiasz z innym dorosłym, a Twoje dziecko pilnie chce Ci coś powiedzieć.",
     options: [
-      { label: "Cierpliwie czeka na swoją kolej i przestrzega zasad gry.", points: 3 },
-      { label: "Czasem się niecierpliwi, ale po przypomnieniu wraca do zasad.", points: 2 },
-      { label: "Regularnie łamie zasady, nie czeka na kolej lub porzuca grę.", points: 1 },
+      { label: "Potrafi chwilę poczekać (np. łapie Cię za rękę, dając znak, że czegoś potrzebuje).", points: 3 },
+      { label: "Przerywa Ci, ale na prośbę: \"daj mi chwilę, skończę zdanie\", udaje mu się powstrzymać impuls.", points: 2 },
+      { label: "Domaga się uwagi \"tu i teraz\". Wpada w frustrację, krzyczy lub szarpie za ubranie.", points: 1 },
     ],
   },
   {
     id: 4,
-    domain: 'working_memory',
-    text: 'Gdy dajesz dziecku instrukcję składającą się z 2\u20133 kroków (np. \u201Ezałóż buty, weź plecak i stań przy drzwiach\u201D), ono:',
+    domain: 'inhibition',
+    title: "Reaktywność na bodźce (Hamowanie impulsów)",
+    situation: "Dziecko widzi na stole kuszącą przekąskę tuż przed obiadem. Wie, że obowiązuje zasada \"nie jemy przed posiłkiem\".",
     options: [
-      { label: "Wykonuje wszystkie kroki po kolei, bez dodatkowych przypomnień.", points: 3 },
-      { label: "Pamięta pierwszy krok, ale potrzebuje przypomnienia o kolejnych.", points: 2 },
-      { label: "Zapomina instrukcję niemal natychmiast i robi coś zupełnie innego.", points: 1 },
+      { label: "Patrzy, mówi o tym, ale potrafi fizycznie powstrzymać się przed sięgnięciem po jedzenie.", points: 3 },
+      { label: "Ręka automatycznie wędruje w stronę stołu, zatrzymuje się dopiero na Twoje wyraźne, werbalne przypomnienie reguły.", points: 2 },
+      { label: "Zjada natychmiast, impuls wyprzedza proces myślowy. Refleksja przychodzi dopiero po fakcie.", points: 1 },
     ],
   },
   {
     id: 5,
-    domain: 'cognitive_flexibility',
-    text: "Jak Twoje dziecko radzi sobie z nową, nieznaną sytuacją (np. pierwszy dzień w nowym miejscu)?",
+    domain: 'inhibition',
+    title: "Tolerancja na frustrację (Zarządzanie błędem)",
+    situation: "Konstrukcja z klocków niespodziewanie się zawaliła.",
     options: [
-      { label: "Jest ciekawe i otwarte, szybko się adaptuje.", points: 3 },
-      { label: "Początkowo jest ostrożne, ale stopniowo się oswaja.", points: 2 },
-      { label: "Reaguje silnym lękiem, płaczem lub odmową uczestnictwa.", points: 1 },
+      { label: "Wzdycha lub wyraża lekkie niezadowolenie, po czym strategicznie zaczyna budować od nowa.", points: 3 },
+      { label: "Reaguje gwałtowną złością, ale z Twoją pomocą szybko wraca do równowagi.", points: 2 },
+      { label: "Następuje \"wybuch\" układu nerwowego. Dziecko rzuca przedmiotami, krzyczy i całkowicie porzuca aktywność, wchodząc w przedłużający się afekt.", points: 1 },
     ],
   },
   {
     id: 6,
-    domain: 'inhibition',
-    text: "Kiedy dziecko chce zabawkę, którą bawi się inne dziecko na placu zabaw, najczęściej:",
+    domain: 'working_memory',
+    title: "Koncentracja i uwaga celowa",
+    situation: "Dziecko wykonuje rutynową czynność – ubiór do przedszkola (bez wsparcia bajek czy muzyki w tle).",
     options: [
-      { label: "Pyta grzecznie, czy może się nią pobawić, lub czeka cierpliwie.", points: 3 },
-      { label: "Jest sfrustrowane, ale po Twoim wsparciu próbuje negocjować.", points: 2 },
-      { label: "Wyrywa zabawkę siłą lub reaguje agresywnie.", points: 1 },
+      { label: "Skupia się na celu i wykonuje zadanie w swoim tempie, z minimalnymi rozpraszaczami.", points: 3 },
+      { label: "Wymaga stałego monitoringu (\"Gdzie twój but?\", \"Załóż kurtkę\"), ponieważ bodźce z otoczenia ciągle je odrywają.", points: 2 },
+      { label: "Bez Twojego bezpośredniego \"prowadzenia za rękę\" zadanie nie ma szans na realizację.", points: 1 },
     ],
   },
   {
     id: 7,
     domain: 'inhibition',
-    text: 'Przed snem, kiedy kończysz czytać bajkę i mówisz \u201Eczas spać\u201D, Twoje dziecko:',
+    title: "Pętla samoregulacji (Powrót do równowagi)",
+    situation: "Po silnym wybuchu złości (tantrum), jak szybko układ nerwowy dziecka wraca do normy?",
     options: [
-      { label: "Akceptuje koniec bajki i spokojnie przygotowuje się do snu.", points: 3 },
-      { label: "Prosi o jeszcze jedną stronę, ale ostatecznie się zgadza.", points: 2 },
-      { label: "Rozpaczliwie protestuje, wstaje z łóżka lub nie może się uspokoić.", points: 1 },
+      { label: "Dość sprawnie. Po uregulowaniu emocji i bliskości fizycznej szybko odzyskuje spokój poznawczy.", points: 3 },
+      { label: "Wymaga czasu (10-15 minut) oraz zaawansowanych strategii dorosłego (np. zmiana otoczenia, aktywne wyciszanie).", points: 2 },
+      { label: "Wybuchy są ekstremalnie wyczerpujące. Kiedy emocje przejmują stery, żadne racjonalne narzędzia i argumenty nie działają.", points: 1 },
     ],
   },
   {
     id: 8,
     domain: 'cognitive_flexibility',
-    text: "Gdy dziecko rysuje i efekt nie wygląda tak, jak sobie wyobrażało, ono:",
+    title: "Adaptacja do nowych reguł (Pamięć robocza & Elastyczność)",
+    situation: "Wprowadzasz nową, prostą domową rutynę (np. \"najpierw myjemy ręce, potem siadamy do stołu\").",
     options: [
-      { label: "Próbuje jeszcze raz lub kreatywnie modyfikuje rysunek.", points: 3 },
-      { label: "Jest chwilowo rozczarowane, ale kontynuuje z pomocą.", points: 2 },
-      { label: "Drze kartkę, rzuca kredki lub odmawia dalszego rysowania.", points: 1 },
+      { label: "Dziecko koduje nową zasadę i po kilku przypomnieniach włącza ją do swojego nawyku.", points: 3 },
+      { label: "Zna zasadę teoretycznie, ale w praktyce musisz pełnić rolę jego \"zewnętrznego dysku twardego\" i stale o niej przypominać.", points: 2 },
+      { label: "Systematycznie ignoruje lub oponuje przed nową strukturą, traktując ją jako ograniczenie wolności.", points: 1 },
     ],
   },
   {
     id: 9,
     domain: 'working_memory',
-    text: "Jak Twoje dziecko zachowuje się, gdy musi czekać (np. w kolejce, w restauracji)?",
+    title: "Zdolność planowania (Inicjowanie działań)",
+    situation: "Masz 15 minut na wypicie kawy. Dziecko ma zająć się samo sobą.",
     options: [
-      { label: "Potrafi się zająć rozmową, obserwacją otoczenia lub cichą zabawą.", points: 3 },
-      { label: "Jest niespokojne, ale z pomocą rozproszenia wytrzymuje.", points: 2 },
-      { label: "Nie jest w stanie wytrzymać — biega, krzyczy lub płacze.", points: 1 },
+      { label: "Potrafi zainicjować własną zabawę (wyciąga klocki, tworzy scenariusz) i angażuje się w ten proces.", points: 3 },
+      { label: "Zaczyna się bawić, ale po chwili wymaga Twojej atencji lub prosi o dostęp do \"szybkiej dopaminy\" (ekran).", points: 2 },
+      { label: "Krąży bez celu, \"nudzi się\" i domaga się, aby to dorosły wymyślił, zorganizował i poprowadził zabawę.", points: 1 },
     ],
   },
   {
     id: 10,
     domain: 'cognitive_flexibility',
-    text: "Gdy musisz niespodziewanie zmienić plany (np. odwołana wizyta na placu zabaw z powodu deszczu), dziecko:",
+    title: "Filtrowanie dystraktorów (Wrażliwość sensoryczna)",
+    situation: "Jesteście w wysoce stymulującym otoczeniu (sala zabaw, gwarne centrum handlowe).",
     options: [
-      { label: "Przyjmuje zmianę ze spokojem i szybko przechodzi do nowej aktywności.", points: 3 },
-      { label: "Jest rozczarowane, ale po wyjaśnieniu akceptuje sytuację.", points: 2 },
-      { label: "Wpada w długotrwały napad złości i nie da się go pocieszyć.", points: 1 },
+      { label: "System nerwowy dziecka świetnie to znosi – bawi się i utrzymuje z Tobą kontakt.", points: 3 },
+      { label: "Jest wyraźnie przestymulowane. Po powrocie do domu odreagowuje napięcie \"skakaniem po ścianach\" lub drażliwością.", points: 2 },
+      { label: "Reaguje przeciążeniem niemal od razu – zatyka uszy, bywa płaczliwe lub \"wyłącza się\", odcinając od kontaktu.", points: 1 },
     ],
   },
 ];
