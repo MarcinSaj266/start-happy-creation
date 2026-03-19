@@ -68,7 +68,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <Lightbulb className="text-accent" size={30} />
       </div>
 
-      <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
         Diagnoza zakończona sukcesem.
       </h2>
 

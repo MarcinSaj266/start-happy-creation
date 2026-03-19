@@ -19,7 +19,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         <span>Narzędzie oparte na neurobiologii</span>
       </div>
 
-      <h1 className="font-heading text-3xl md:text-5xl font-semibold text-foreground leading-tight max-w-xl mb-6">
+      <h1 className="text-3xl md:text-5xl font-semibold text-foreground leading-tight max-w-xl mb-6">
         Sprawdź architekturę neuronalną Twojego dziecka.
       </h1>
 

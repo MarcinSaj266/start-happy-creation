@@ -94,7 +94,7 @@ const QuizScreen = ({ onComplete }: QuizScreenProps) => {
           exit={{ opacity: 0, x: -30 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground leading-snug mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground leading-snug mb-8">
             {question.text}
           </h2>
 
