@@ -21,7 +21,7 @@ const Index = () => {
   const [view, setView] = useState<View>("start");
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-
+  const [profile, setProfile] = useState<ResultProfile | null>(null);
   const handleStart = async () => {
     // Create a new quiz session in Supabase
     const { data, error } = await supabase
