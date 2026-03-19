@@ -4,6 +4,8 @@ import StartScreen from "@/components/StartScreen";
 import QuizScreen from "@/components/QuizScreen";
 import ResultScreen from "@/components/ResultScreen";
 import { supabase } from "@/integrations/supabase/client";
+import { getProfileByScore } from "@/data/profiles";
+import type { ResultProfile } from "@/data/profiles";
 import type { ExecutiveDomain } from "@/data/questions";
 import logo from "@/assets/logo.png";
 
@@ -19,7 +21,7 @@ const Index = () => {
   const [view, setView] = useState<View>("start");
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-
+  const [profile, setProfile] = useState<ResultProfile | null>(null);
   const handleStart = async () => {
     // Create a new quiz session in Supabase
     const { data, error } = await supabase
@@ -52,7 +54,7 @@ const Index = () => {
       scores[a.domain] += a.score;
     });
     const totalScore = Object.values(scores).reduce((s, v) => s + v, 0);
-
+    setProfile(getProfileByScore(totalScore));
     // Save answers
     const answerRows = collectedAnswers.map((a) => ({
       session_id: sessionId,
@@ -121,7 +123,7 @@ const Index = () => {
         <AnimatePresence mode="wait">
           {view === "start" && <StartScreen key="start" onStart={handleStart} />}
           {view === "quiz" && <QuizScreen key="quiz" onComplete={handleComplete} />}
-          {view === "result" && <ResultScreen key="result" onEmailSubmit={handleEmailSubmit} />}
+          {view === "result" && profile && <ResultScreen key="result" profile={profile} onEmailSubmit={handleEmailSubmit} />}
         </AnimatePresence>
       </div>
     </div>

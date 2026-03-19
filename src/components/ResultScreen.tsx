@@ -2,14 +2,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbulb, ArrowRight, CheckCircle, Lock } from "lucide-react";
 import { z } from "zod";
+import type { ResultProfile } from "@/data/profiles";
 
 const emailSchema = z.string().trim().email("Podaj prawidłowy adres e-mail").max(255);
 
 interface ResultScreenProps {
+  profile: ResultProfile;
   onEmailSubmit: (email: string) => Promise<boolean>;
 }
 
-const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
+const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -66,19 +68,24 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <Lightbulb className="text-accent" size={30} />
       </div>
 
-      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">Analiza zakończona sukcesem.</h2>
+      {/* Dynamic Title & Subtitle */}
+      <h1 className="text-xl md:text-2xl font-semibold text-foreground mb-2 leading-tight">
+        {profile.title}
+      </h1>
+      <h2 className="text-base md:text-lg text-muted-foreground font-medium mb-8">
+        {profile.subtitle}
+      </h2>
 
+      {/* Dynamic Description */}
       <div className="w-full bg-foreground text-card rounded-2xl p-6 md:p-8 text-left mb-8">
         <p className="text-sm md:text-base leading-relaxed opacity-90">
-          <span className="font-semibold opacity-100">Wstępna analiza:</span> Twój profil wskazuje na bardzo dobrą
-          pamięć roboczą dziecka, ale układ hamowania impulsów znajduje się w kluczowej fazie neuroplastycznej i wymaga
-          Twojego wsparcia.
+          {profile.description}
         </p>
       </div>
 
+      {/* Dynamic CTA Subtext */}
       <p className="text-muted-foreground text-sm md:text-base max-w-md mb-6 leading-relaxed">
-        Podaj adres e-mail, na który wyślemy pełny profil i{" "}
-        <span className="font-semibold text-foreground">3-krokowy protokół ratunkowy w PDF.</span>
+        {profile.ctaSubtext}
       </p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
@@ -97,12 +104,13 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
           {error && <p className="text-destructive text-sm mt-2 text-left">{error}</p>}
         </div>
 
+        {/* Dynamic CTA Button */}
         <button
           type="submit"
           disabled={loading}
           className="w-full bg-accent text-accent-foreground font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:hover:translate-y-0"
         >
-          {loading ? "Wysyłanie..." : "Odbieram mój protokół PDF"}
+          {loading ? "Wysyłanie..." : profile.ctaText}
           {!loading && <ArrowRight size={18} />}
         </button>
       </form>
