@@ -5,6 +5,7 @@ import QuizScreen from "@/components/QuizScreen";
 import ResultScreen from "@/components/ResultScreen";
 import { supabase } from "@/integrations/supabase/client";
 import type { ExecutiveDomain } from "@/data/questions";
+import logo from "@/assets/logo.png";
 
 type View = "start" | "quiz" | "result";
 
