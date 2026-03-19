@@ -54,7 +54,7 @@ const Index = () => {
       scores[a.domain] += a.score;
     });
     const totalScore = Object.values(scores).reduce((s, v) => s + v, 0);
-
+    setProfile(getProfileByScore(totalScore));
     // Save answers
     const answerRows = collectedAnswers.map((a) => ({
       session_id: sessionId,
