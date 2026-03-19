@@ -46,9 +46,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6">
           <CheckCircle className="text-accent-foreground" size={32} />
         </div>
-        <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
-          Sprawdź swoją skrzynkę mailową!
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">Sprawdź swoją skrzynkę mailową!</h2>
         <p className="text-muted-foreground max-w-sm">
           Twój spersonalizowany protokół PDF został wysłany na podany adres e-mail.
         </p>
@@ -68,24 +66,19 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <Lightbulb className="text-accent" size={30} />
       </div>
 
-      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
-        Diagnoza zakończona sukcesem.
-      </h2>
+      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">Analiza zakończona sukcesem.</h2>
 
       <div className="w-full bg-foreground text-card rounded-2xl p-6 md:p-8 text-left mb-8">
         <p className="text-sm md:text-base leading-relaxed opacity-90">
-          <span className="font-semibold opacity-100">Wstępna analiza:</span>{" "}
-          Twój profil wskazuje na bardzo dobrą pamięć roboczą dziecka, ale układ
-          hamowania impulsów znajduje się w kluczowej fazie neuroplastycznej
-          i wymaga Twojego wsparcia.
+          <span className="font-semibold opacity-100">Wstępna analiza:</span> Twój profil wskazuje na bardzo dobrą
+          pamięć roboczą dziecka, ale układ hamowania impulsów znajduje się w kluczowej fazie neuroplastycznej i wymaga
+          Twojego wsparcia.
         </p>
       </div>
 
       <p className="text-muted-foreground text-sm md:text-base max-w-md mb-6 leading-relaxed">
         Podaj adres e-mail, na który wyślemy pełny profil i{" "}
-        <span className="font-semibold text-foreground">
-          3-krokowy protokół ratunkowy w PDF.
-        </span>
+        <span className="font-semibold text-foreground">3-krokowy protokół ratunkowy w PDF.</span>
       </p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
@@ -101,9 +94,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
             disabled={loading}
             className="w-full px-5 py-4 rounded-xl border-2 border-secondary bg-card text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all text-base disabled:opacity-50"
           />
-          {error && (
-            <p className="text-destructive text-sm mt-2 text-left">{error}</p>
-          )}
+          {error && <p className="text-destructive text-sm mt-2 text-left">{error}</p>}
         </div>
 
         <button
@@ -118,10 +109,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
 
       <div className="flex items-center gap-2 mt-6 text-muted-foreground/70 text-xs max-w-sm">
         <Lock size={12} className="flex-shrink-0" />
-        <p>
-          Twoje dane są bezpieczne. Nie udostępniamy ich osobom trzecim.
-          Polityka prywatności zgodna z RODO.
-        </p>
+        <p>Twoje dane są bezpieczne. Nie udostępniamy ich osobom trzecim. Polityka prywatności zgodna z RODO.</p>
       </div>
     </motion.div>
   );
