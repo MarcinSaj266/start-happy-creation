@@ -123,7 +123,7 @@ const Index = () => {
         <AnimatePresence mode="wait">
           {view === "start" && <StartScreen key="start" onStart={handleStart} />}
           {view === "quiz" && <QuizScreen key="quiz" onComplete={handleComplete} />}
-          {view === "result" && <ResultScreen key="result" onEmailSubmit={handleEmailSubmit} />}
+          {view === "result" && profile && <ResultScreen key="result" profile={profile} onEmailSubmit={handleEmailSubmit} />}
         </AnimatePresence>
       </div>
     </div>
