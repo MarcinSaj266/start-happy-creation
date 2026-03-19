@@ -4,6 +4,8 @@ import StartScreen from "@/components/StartScreen";
 import QuizScreen from "@/components/QuizScreen";
 import ResultScreen from "@/components/ResultScreen";
 import { supabase } from "@/integrations/supabase/client";
+import { getProfileByScore } from "@/data/profiles";
+import type { ResultProfile } from "@/data/profiles";
 import type { ExecutiveDomain } from "@/data/questions";
 import logo from "@/assets/logo.png";
 
