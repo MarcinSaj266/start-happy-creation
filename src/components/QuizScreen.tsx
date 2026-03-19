@@ -94,8 +94,11 @@ const QuizScreen = ({ onComplete }: QuizScreenProps) => {
           exit={{ opacity: 0, x: -30 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground leading-snug mb-8">
-            {question.text}
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-widest text-accent mb-2">
+            Pytanie {currentIndex + 1}: {question.title}
+          </p>
+          <h2 className="text-base md:text-lg font-medium text-foreground leading-relaxed mb-8">
+            <span className="font-semibold">Sytuacja:</span> {question.situation}
           </h2>
 
           <div className="space-y-3">
