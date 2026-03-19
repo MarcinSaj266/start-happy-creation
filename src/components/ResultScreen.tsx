@@ -46,7 +46,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6">
           <CheckCircle className="text-accent-foreground" size={32} />
         </div>
-        <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-3">
+        <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
           Sprawdź swoją skrzynkę mailową!
         </h2>
         <p className="text-muted-foreground max-w-sm">
@@ -68,7 +68,7 @@ const ResultScreen = ({ onEmailSubmit }: ResultScreenProps) => {
         <Lightbulb className="text-accent" size={30} />
       </div>
 
-      <h2 className="font-heading text-2xl md:text-3xl font-semibold text-foreground mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
         Diagnoza zakończona sukcesem.
       </h2>
 

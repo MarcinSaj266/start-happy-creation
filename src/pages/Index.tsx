@@ -5,6 +5,7 @@ import QuizScreen from "@/components/QuizScreen";
 import ResultScreen from "@/components/ResultScreen";
 import { supabase } from "@/integrations/supabase/client";
 import type { ExecutiveDomain } from "@/data/questions";
+import logo from "@/assets/logo.png";
 
 type View = "start" | "quiz" | "result";
 
@@ -109,7 +110,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4 md:p-8">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 md:p-8">
+      {/* Branding Header */}
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <img src={logo} alt="Logigłówka logo" className="h-10 w-auto" />
+        <span className="text-foreground font-bold text-2xl tracking-tight">Logigłówka</span>
+      </div>
+
       <div className="w-full max-w-xl bg-card rounded-[24px] shadow-[0_8px_30px_rgb(31,45,77,0.08)] overflow-hidden">
         <AnimatePresence mode="wait">
           {view === "start" && <StartScreen key="start" onStart={handleStart} />}

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Fredoka", "sans-serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Plus Jakarta Sans", "sans-serif"],
+        body: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
