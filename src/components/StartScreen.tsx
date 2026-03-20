@@ -42,7 +42,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         onClick={onStart}
         className="bg-accent text-accent-foreground font-semibold text-base md:text-lg px-10 py-4 rounded-full transition-all duration-200 hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 shadow-md hover:shadow-lg mb-6">
         
-        Rozpocznij Diagnozę
+        Rozpocznij Analizę
       </button>
 
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-muted-foreground text-xs md:text-sm font-medium">
