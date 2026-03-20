@@ -78,7 +78,7 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
 
       {/* Dynamic Description */}
       <div className="w-full bg-foreground text-card rounded-2xl p-6 md:p-8 text-left mb-8">
-        <p className="text-sm md:text-base leading-relaxed opacity-90">
+        <p className="text-sm md:text-base leading-relaxed opacity-90 whitespace-pre-line">
           {profile.description}
         </p>
       </div>
