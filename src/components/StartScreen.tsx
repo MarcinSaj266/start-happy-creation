@@ -49,6 +49,13 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         <ShieldCheck size={14} />
         <span>W oparciu o modele badawcze (m.in. Harvard Center on the Developing Child).</span>
       </div>
+
+      <Link
+        to="/o-nas"
+        className="mt-4 text-muted-foreground/70 hover:text-foreground text-xs underline underline-offset-4 transition-colors"
+      >
+        Poznaj Logigłówkę →
+      </Link>
     </motion.div>);
 
 };
