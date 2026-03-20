@@ -52,8 +52,8 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
 
       <Link
         to="/o-nas"
-        className="mt-4 text-muted-foreground/70 hover:text-foreground text-xs underline underline-offset-4 transition-colors"
-      >
+        className="mt-4 text-muted-foreground/70 hover:text-foreground underline underline-offset-4 transition-colors text-base">
+        
         Poznaj Logigłówkę →
       </Link>
     </motion.div>);
