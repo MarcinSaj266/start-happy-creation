@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface StartScreenProps {
   onStart: () => void;
