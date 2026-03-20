@@ -29,7 +29,7 @@ export const resultProfiles: ResultProfile[] = [
     title: "Twój wynik: Kreatywny Eksplorator",
     subtitle: "Gigantyczny potencjał, który wymaga optymalizacji zasilania.",
     description:
-      'Zmagasz się czasem z poczuciem, że Twoje dziecko rano jest bystrym strategiem, a wieczorem kompletnie traci koncentrację i emocjonalną równowagę? Wynik Neuro-Kalkulatora wyjaśnia ten mechanizm bezbłędnie. Twoje dziecko znajduje się w kluczowej fazie tzw. radykalnego przycinania synaptycznego. Zręby kontroli i pamięci operacyjnej już błyszczą, ale ich bufor jest wciąż bardzo mały. Gdy system doznaje \u201Eprzegrzania\u201D (po intensywnym dniu w przedszkolu lub w silnych emocjach), sieć uwagowa drastycznie spada. To nie jest regres. To masywna reorganizacja kory mózgowej przed wielkim skokiem elastyczności poznawczej.',
+      'Zmagasz się czasem z poczuciem, że Twoje dziecko rano jest bystrym strategiem, a wieczorem kompletnie traci koncentrację i emocjonalną równowagę? Wynik Neuro-Kalkulatora wyjaśnia ten mechanizm bezbłędnie.\n\nTwoje dziecko znajduje się w kluczowej fazie tzw. radykalnego przycinania synaptycznego. Zręby kontroli i pamięci operacyjnej już błyszczą, ale ich bufor jest wciąż bardzo mały.\n\nGdy system doznaje \u201Eprzegrzania\u201D (po intensywnym dniu w przedszkolu lub w silnych emocjach), sieć uwagowa drastycznie spada. To nie jest regres. To masywna reorganizacja kory mózgowej przed wielkim skokiem elastyczności poznawczej.',
     ctaText: 'Zrozum mechanizm i powiększ \u201Epojemność bufora\u201D swojego dziecka.',
     ctaSubtext:
       "Zostaw e-mail, aby natychmiast odebrać Pełną Analizę Profilu oraz dedykowany Protokół Rezerwacji Pojemności – 5-minutowe ćwiczenie domowe, które powiększy zasoby jego pamięci roboczej.",
