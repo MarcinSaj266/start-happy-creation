@@ -42,6 +42,10 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
     setLoading(false);
 
     if (success) {
+      toast({
+        title: "Dziękujemy!",
+        description: "Twój spersonalizowany protokół rozwojowy za chwilę trafi na Twoją skrzynkę e-mail.",
+      });
       setSubmitted(true);
     } else {
       setError("Wystąpił błąd. Spróbuj ponownie.");
