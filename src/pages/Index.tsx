@@ -108,22 +108,26 @@ const Index = () => {
       if (updateError) console.error("Failed to update session:", updateError);
     }
 
-    // Send email with PDF report link
-    if (profile) {
-      const pdfUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/quiz-reports/${profile.pdfFileName}`;
-      await supabase.functions.invoke("send-transactional-email", {
-        body: {
-          templateName: "quiz-result",
-          recipientEmail: email,
-          idempotencyKey: `quiz-result-${sessionId ?? crypto.randomUUID()}`,
-          templateData: {
-            name,
-            profileTitle: profile.title,
-            profileSubtitle: profile.subtitle,
-            pdfUrl,
-          },
-        },
+    // Send data to Make.com webhook for MailerLite integration
+    try {
+      await fetch("https://hook.eu1.make.com/lc5uihxfimjbg9hwtfpwz75gxrpdwu64", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name,
+          profile: profile ? {
+            id: profile.id,
+            title: profile.title,
+            subtitle: profile.subtitle,
+          } : null,
+          totalScore: answers.reduce((sum, a) => sum + a.score, 0),
+          sessionId,
+        }),
       });
+    } catch (webhookError) {
+      console.error("Webhook error:", webhookError);
+      // Don't block the user if webhook fails – data is already in DB
     }
 
     return true;
