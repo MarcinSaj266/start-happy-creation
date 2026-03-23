@@ -22,6 +22,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: "Zdejmij z siebie presję i przejmij kontrolę. >",
     ctaSubtext:
       "Podaj adres e-mail, a prześlę Ci natychmiast Pełną Analizę Profilu oraz gotowy do wdrożenia dziś protokół Zero-Prep (5-minutowe ćwiczenie, które fizycznie rozbudowuje sieci hamujące w mózgu Twojego dziecka).",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka1.pdf",
   },
   {
     id: "explorer",
