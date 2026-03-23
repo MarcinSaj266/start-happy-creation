@@ -35,6 +35,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: 'Zrozum mechanizm i powiększ \u201Epojemność bufora\u201D swojego dziecka.',
     ctaSubtext:
       "Zostaw e-mail, aby natychmiast odebrać Pełną Analizę Profilu oraz dedykowany Protokół Rezerwacji Pojemności – 5-minutowe ćwiczenie domowe, które powiększy zasoby jego pamięci roboczej.",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka2.pdf",
   },
   {
     id: "strategist",
