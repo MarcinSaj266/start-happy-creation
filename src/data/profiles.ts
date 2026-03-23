@@ -7,6 +7,7 @@ export interface ResultProfile {
   description: string;
   ctaText: string;
   ctaSubtext: string;
+  pdfFileName: string;
 }
 
 export const resultProfiles: ResultProfile[] = [
@@ -21,6 +22,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: "Zdejmij z siebie presję i przejmij kontrolę. >",
     ctaSubtext:
       "Podaj adres e-mail, a prześlę Ci natychmiast Pełną Analizę Profilu oraz gotowy do wdrożenia dziś protokół Zero-Prep (5-minutowe ćwiczenie, które fizycznie rozbudowuje sieci hamujące w mózgu Twojego dziecka).",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka1.pdf",
   },
   {
     id: "explorer",
@@ -33,6 +35,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: 'Zrozum mechanizm i powiększ \u201Epojemność bufora\u201D swojego dziecka.',
     ctaSubtext:
       "Zostaw e-mail, aby natychmiast odebrać Pełną Analizę Profilu oraz dedykowany Protokół Rezerwacji Pojemności – 5-minutowe ćwiczenie domowe, które powiększy zasoby jego pamięci roboczej.",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka2.pdf",
   },
   {
     id: "strategist",
@@ -45,6 +48,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: "Zdobądź instrukcje dla elitarnych umysłów.",
     ctaSubtext:
       "Zostaw adres e-mail, aby odebrać Pełną Analizę Profilu oraz wysoce zaawansowany Protokół Operacji Metapoznawczej – 5-minutowy trening elastyczności myślenia i radzenia sobie z błędami.",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka3.pdf",
   },
 ];
 

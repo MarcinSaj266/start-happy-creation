@@ -82,11 +82,11 @@ const Index = () => {
     setView("result");
   };
 
-  const handleEmailSubmit = async (email: string) => {
-    // Upsert lead (in case email already exists)
+  const handleEmailSubmit = async (email: string, name: string) => {
+    // Upsert lead with first_name
     const { data: lead, error: leadError } = await supabase
       .from("leads")
-      .upsert({ email }, { onConflict: "email" })
+      .upsert({ email, first_name: name }, { onConflict: "email" })
       .select("id")
       .single();
 
@@ -106,6 +106,24 @@ const Index = () => {
         .eq("id", sessionId);
 
       if (updateError) console.error("Failed to update session:", updateError);
+    }
+
+    // Send email with PDF report link
+    if (profile) {
+      const pdfUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/quiz-reports/${profile.pdfFileName}`;
+      await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "quiz-result",
+          recipientEmail: email,
+          idempotencyKey: `quiz-result-${sessionId ?? crypto.randomUUID()}`,
+          templateData: {
+            name,
+            profileTitle: profile.title,
+            profileSubtitle: profile.subtitle,
+            pdfUrl,
+          },
+        },
+      });
     }
 
     return true;

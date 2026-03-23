@@ -4,14 +4,16 @@ import { Lightbulb, ArrowRight, CheckCircle, Lock } from "lucide-react";
 import { z } from "zod";
 import type { ResultProfile } from "@/data/profiles";
 
+const nameSchema = z.string().trim().min(2, "Imię musi mieć co najmniej 2 znaki").max(50, "Imię może mieć maksymalnie 50 znaków");
 const emailSchema = z.string().trim().email("Podaj prawidłowy adres e-mail").max(255);
 
 interface ResultScreenProps {
   profile: ResultProfile;
-  onEmailSubmit: (email: string) => Promise<boolean>;
+  onEmailSubmit: (email: string, name: string) => Promise<boolean>;
 }
 
 const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -19,15 +21,23 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = emailSchema.safeParse(email);
-    if (!result.success) {
-      setError(result.error.errors[0].message);
+
+    const nameResult = nameSchema.safeParse(name);
+    if (!nameResult.success) {
+      setError(nameResult.error.errors[0].message);
       return;
     }
+
+    const emailResult = emailSchema.safeParse(email);
+    if (!emailResult.success) {
+      setError(emailResult.error.errors[0].message);
+      return;
+    }
+
     setError("");
     setLoading(true);
 
-    const success = await onEmailSubmit(result.data);
+    const success = await onEmailSubmit(emailResult.data, nameResult.data);
     setLoading(false);
 
     if (success) {
@@ -68,7 +78,6 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
         <Lightbulb className="text-accent" size={30} />
       </div>
 
-      {/* Dynamic Title & Subtitle */}
       <h1 className="text-xl md:text-2xl font-semibold text-foreground mb-2 leading-tight">
         {profile.title}
       </h1>
@@ -76,19 +85,30 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
         {profile.subtitle}
       </h2>
 
-      {/* Dynamic Description */}
       <div className="w-full bg-foreground text-card rounded-2xl p-6 md:p-8 text-left mb-8">
         <p className="text-sm md:text-base leading-relaxed opacity-90 whitespace-pre-line">
           {profile.description}
         </p>
       </div>
 
-      {/* Dynamic CTA Subtext */}
       <p className="text-muted-foreground text-sm md:text-base max-w-md mb-6 leading-relaxed">
         {profile.ctaSubtext}
       </p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
+        <div>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              if (error) setError("");
+            }}
+            placeholder="Twoje imię"
+            disabled={loading}
+            className="w-full px-5 py-4 rounded-xl border-2 border-secondary bg-card text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all text-base disabled:opacity-50"
+          />
+        </div>
         <div>
           <input
             type="email"
@@ -101,10 +121,9 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
             disabled={loading}
             className="w-full px-5 py-4 rounded-xl border-2 border-secondary bg-card text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all text-base disabled:opacity-50"
           />
-          {error && <p className="text-destructive text-sm mt-2 text-left">{error}</p>}
         </div>
+        {error && <p className="text-destructive text-sm text-left">{error}</p>}
 
-        {/* Dynamic CTA Button */}
         <button
           type="submit"
           disabled={loading}
