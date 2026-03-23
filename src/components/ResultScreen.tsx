@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbulb, ArrowRight, CheckCircle, Lock } from "lucide-react";
 import { z } from "zod";
+import { toast } from "@/hooks/use-toast";
 import type { ResultProfile } from "@/data/profiles";
 
 const nameSchema = z.string().trim().min(2, "Imię musi mieć co najmniej 2 znaki").max(50, "Imię może mieć maksymalnie 50 znaków");
@@ -41,6 +42,10 @@ const ResultScreen = ({ profile, onEmailSubmit }: ResultScreenProps) => {
     setLoading(false);
 
     if (success) {
+      toast({
+        title: "Dziękujemy!",
+        description: "Twój spersonalizowany protokół rozwojowy za chwilę trafi na Twoją skrzynkę e-mail.",
+      });
       setSubmitted(true);
     } else {
       setError("Wystąpił błąd. Spróbuj ponownie.");
