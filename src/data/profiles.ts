@@ -48,6 +48,7 @@ export const resultProfiles: ResultProfile[] = [
     ctaText: "Zdobądź instrukcje dla elitarnych umysłów.",
     ctaSubtext:
       "Zostaw adres e-mail, aby odebrać Pełną Analizę Profilu oraz wysoce zaawansowany Protokół Operacji Metapoznawczej – 5-minutowy trening elastyczności myślenia i radzenia sobie z błędami.",
+    pdfFileName: "Logiglowka_Profil_Poznawczy_Dziecka3.pdf",
   },
 ];
 
