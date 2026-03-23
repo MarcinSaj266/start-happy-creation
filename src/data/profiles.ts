@@ -7,6 +7,7 @@ export interface ResultProfile {
   description: string;
   ctaText: string;
   ctaSubtext: string;
+  pdfFileName: string;
 }
 
 export const resultProfiles: ResultProfile[] = [
